@@ -3,10 +3,10 @@
     </a>  
      <img id="logoJava" src="${pageContext.request.contextPath}/resources/java.png"/>  -->
                 <div class="header-limiter">
-		<h1><a href="#">CRM<span>MIAGE</span></a></h1>
+		<h1><a href="index.jsp">CRM<span>MIAGE</span></a></h1>
 
 		<nav>
-			<a href="#">Home</a>
+			<a href="index.jsp">Home</a>
 			<a href="accueilEntreprise.jsp" class="selected">Entreprise</a>
                         
 		</nav>
