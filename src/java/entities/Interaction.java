@@ -19,46 +19,44 @@ import javax.persistence.Temporal;
  */
 @Entity
 public abstract class Interaction implements Serializable {
+
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateInteraction;
+    private InteractionType interactionType;
     private String contenu;
 
-     public Interaction() {}
-    
-     public Interaction(String contenu) {
+    public Interaction() {
+    }
+
+    public Interaction(String contenu) {
         this.contenu = contenu;
         this.dateInteraction = new Date();
     }
-    
+
     public Date getDateInteraction() {
         return dateInteraction;
+    }
+    
+    public InteractionType getInteractionType() {
+        return interactionType;
     }
 
     public String getContenu() {
         return contenu;
     }
 
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
-    }
-    
-    
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    // toutes les sous-classes devront avoir une
-    // methode getType
     abstract public String getType();
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -68,14 +66,18 @@ public abstract class Interaction implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Interaction)) {
             return false;
         }
+        
         Interaction other = (Interaction) object;
+        
         if (this.id != other.id) {
             return false;
         }
+        
         return true;
     }
 
@@ -83,5 +85,4 @@ public abstract class Interaction implements Serializable {
     public String toString() {
         return "entities.Interaction[ id=" + id + " ]";
     }
-    
 }

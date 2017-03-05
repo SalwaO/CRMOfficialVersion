@@ -7,8 +7,6 @@ package gestionnaire;
 
 import entities.Entreprise;
 import entities.Interaction;
-import entities.InteractionCoupTelephone;
-import entities.InteractionEmail;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,6 +18,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class EntrepriseFacade extends AbstractFacade<Entreprise> {
+
     @EJB
     private InteractionFacade interactionFacade;
 
@@ -31,13 +30,13 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> {
     // ou de nouvelles requêtes on rajoutera
     // des méthodes ici...
     public void creerEntreprisesDeTest() {
-        System.out.println("CREATION DE DONNEES DE TEST");
+        /*System.out.println("CREATION DE DONNEES DE TEST");
 
         Entreprise e1 = new Entreprise("Miage Nice",
                 "Route des Lucioles",
                 "06560", "Sophia-Antipolis",
                 "La meilleure entreprise du monde");
-        
+
         // utilisation de la méthode héritée pour faire
         // un insert
         create(e1);
@@ -47,24 +46,21 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> {
         interactionFacade.create(i1);
         // on met à jour la jointure
         e1.addInteraction(i1);
-        
+
         Interaction i2 = new InteractionEmail("Email à Mr Dupont", "0493546543");
         // on fait un insert dans la table des interactions
         interactionFacade.create(i2);
         // on met à jour la jointure
         e1.addInteraction(i2);
 
-        
         Entreprise e2 = new Entreprise("Polytech Nice",
                 "Site des Templier",
                 "06560", "Sophia-Antipolis",
                 "De l'autre côté de la rue");
-        
+
         // utilisation de la méthode héritée pour faire
         // un insert
-        create(e2);
-        
-        
+        create(e2);*/
     }
 
     @Override
@@ -75,5 +71,4 @@ public class EntrepriseFacade extends AbstractFacade<Entreprise> {
     public EntrepriseFacade() {
         super(Entreprise.class);
     }
-
 }

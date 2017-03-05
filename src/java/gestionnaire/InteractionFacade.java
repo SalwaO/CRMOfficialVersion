@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class InteractionFacade extends AbstractFacade<Interaction> {
+
     @PersistenceContext
     private EntityManager em;
 
@@ -27,5 +28,4 @@ public class InteractionFacade extends AbstractFacade<Interaction> {
     public InteractionFacade() {
         super(Interaction.class);
     }
-    
 }

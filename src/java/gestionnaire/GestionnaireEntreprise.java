@@ -18,11 +18,7 @@ public class GestionnaireEntreprise {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
     // Creer une entreprise
-    
     // rechercher une entreprise
-    
     // renvoyer toutes les entreprises
-    
 }

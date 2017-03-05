@@ -12,3 +12,5 @@
 hs_err_pid*
 /CRM_MIAGE/build/
 /CRM_MIAGE/nbproject/private/
+/nbproject/private/
+/build/

@@ -25,6 +25,7 @@ import javax.persistence.Temporal;
 public class Entreprise implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -33,24 +34,24 @@ public class Entreprise implements Serializable {
     private String codePostal;
     private String ville;
     private String description;
+    
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateCreation;
+    
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Interaction> interactions = new ArrayList();
+    private List<Interaction> interactions;
 
     public Entreprise() {
     }
 
-    public Entreprise(String nom, String adresse, String codePostal,
-            String ville, String description) {
-
+    public Entreprise(String nom, String adresse, String codePostal, String ville, String description) {
         this.nom = nom;
         this.adresse = adresse;
         this.codePostal = codePostal;
         this.ville = ville;
         this.description = description;
-
         this.dateCreation = new Date();
+        this.interactions = new ArrayList();
     }
 
     // Bonne pratique quand on a des relations 1-N ou N-N
@@ -127,10 +128,13 @@ public class Entreprise implements Serializable {
         if (!(object instanceof Entreprise)) {
             return false;
         }
+        
         Entreprise other = (Entreprise) object;
+        
         if (this.id != other.id) {
             return false;
         }
+        
         return true;
     }
 
@@ -138,5 +142,4 @@ public class Entreprise implements Serializable {
     public String toString() {
         return "entities.Entreprise[ id=" + id + " ]";
     }
-
 }
