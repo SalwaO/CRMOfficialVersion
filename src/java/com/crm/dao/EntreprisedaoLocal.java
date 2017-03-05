@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.crm.dao;
 
 import com.crm.model.Entreprise;
@@ -18,14 +14,16 @@ public interface EntreprisedaoLocal {
 
     void ajouterEntreprise(Entreprise entreprise);
 
+    void ajouterEntreprise();
+
     void modifierEntreprise(Entreprise entreprise);
 
     void supprimerEntreprise(String mail);
 
     Entreprise getEntrepriseByMail(String mail);
-    
+
     List<Entreprise> getEntrepriseByMailAndByPassword(String mail, String password);
-    
+
     List<Entreprise> getAllEntreprises();
 
 }
