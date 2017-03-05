@@ -14,13 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 @WebServlet(name = "ServletEntreprise", urlPatterns = {"/ServletEntreprise"})
-public class ServletEntreprise extends HttpServlet{
-    
+public class ServletEntreprise extends HttpServlet {
+
     @EJB
     private GestionnaireEntreprise gestionnaireEntreprise;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -28,15 +27,16 @@ public class ServletEntreprise extends HttpServlet{
         String action = request.getParameter("action");
         String forwardTo = "";
         String message = "";
-        
+
         if (action != null) {
- ///////////////////////// lister, creer, chercher, supprimer, modifier ...           
+            ///////////////////////// lister, creer, chercher, supprimer, modifier ...           
             if (action.equals("listerLesEntreprises")) {
-            
+
             }
         }
     }
 ////////////////////////////////////// METHODES //////////////////
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

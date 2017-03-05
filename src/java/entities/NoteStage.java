@@ -6,55 +6,56 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
+import javax.persistence.OneToOne;
 
 /**
  *
- * @author mbuffa
+ * @author Julian
  */
 @Entity
-public abstract class Interaction implements Serializable {
+public class NoteStage implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private double note;
     
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date dateInteraction;
-    private InteractionType interactionType;
-    private String contenu;
+    @OneToOne
+    private Etudiant etudiant;
+    
+    @OneToOne
+    private Stage stage;
 
-    public Interaction() {
+    public NoteStage() {
     }
 
-    public Interaction(String contenu) {
-        this.contenu = contenu;
-        this.dateInteraction = new Date();
+    public NoteStage(double note, Etudiant etudiant, Stage stage) {
+        this.note = note;
+        this.etudiant = etudiant;
+        this.stage = stage;
+    }
+
+    public double getNote() {
+        return note;
+    }
+
+    public Etudiant getEtudiant() {
+        return etudiant;
+    }
+
+    public Stage getStage() {
+        return stage;
     }
     
     public int getId() {
         return id;
     }
-
-    public Date getDateInteraction() {
-        return dateInteraction;
-    }
     
-    public InteractionType getInteractionType() {
-        return interactionType;
-    }
-
-    public String getContenu() {
-        return contenu;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -66,13 +67,13 @@ public abstract class Interaction implements Serializable {
     public boolean equals(Object object) {
         
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Interaction)) {
+        if (!(object instanceof NoteStage)) {
             return false;
         }
         
-        Interaction other = (Interaction) object;
+        NoteStage other = (NoteStage) object;
         
-        if (this.id != other.id) {
+        if (this.id != other.id ) {
             return false;
         }
         
@@ -81,6 +82,6 @@ public abstract class Interaction implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Interaction[ id=" + id + " ]";
+        return "entities.NoteStage[ id=" + id + " ]";
     }
 }

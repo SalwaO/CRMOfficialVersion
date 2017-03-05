@@ -25,7 +25,7 @@ import javax.persistence.Temporal;
 public class Entreprise implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -34,12 +34,15 @@ public class Entreprise implements Serializable {
     private String codePostal;
     private String ville;
     private String description;
-    
+
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dateCreation;
-    
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Interaction> interactions;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Stage> stages;
 
     public Entreprise() {
     }
@@ -52,19 +55,11 @@ public class Entreprise implements Serializable {
         this.description = description;
         this.dateCreation = new Date();
         this.interactions = new ArrayList();
+        this.stages = new ArrayList<>();
     }
 
-    // Bonne pratique quand on a des relations 1-N ou N-N
-    public List<Interaction> getInteractions() {
-        return interactions;
-    }
-
-    public void addInteraction(Interaction i) {
-        interactions.add(i);
-    }
-
-    public void removeInteraction(Interaction i) {
-        interactions.remove(i);
+    public int getId() {
+        return id;
     }
 
     public String getNom() {
@@ -111,8 +106,28 @@ public class Entreprise implements Serializable {
         return dateCreation;
     }
 
-    public int getId() {
-        return id;
+    public List<Interaction> getInteractions() {
+        return interactions;
+    }
+
+    public void addInteraction(Interaction i) {
+        interactions.add(i);
+    }
+
+    public void removeInteraction(Interaction i) {
+        interactions.remove(i);
+    }
+
+    public List<Stage> getStages() {
+        return stages;
+    }
+
+    public void addStage(Stage stage) {
+        stages.add(stage);
+    }
+
+    public void removeStage(Stage stage) {
+        stages.remove(stage);
     }
 
     @Override
@@ -128,13 +143,13 @@ public class Entreprise implements Serializable {
         if (!(object instanceof Entreprise)) {
             return false;
         }
-        
+
         Entreprise other = (Entreprise) object;
-        
+
         if (this.id != other.id) {
             return false;
         }
-        
+
         return true;
     }
 

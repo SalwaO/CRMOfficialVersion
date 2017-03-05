@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -34,7 +35,13 @@ public class Stage implements Serializable {
     private Date dateFin;
     private String intitule;
     private String contenu;
-
+    
+    @OneToOne
+    private Etudiant etudiant;
+    
+    @OneToOne
+    private Entreprise entreprise;
+    
     public Stage() {
     }
 
@@ -49,7 +56,7 @@ public class Stage implements Serializable {
     public int getId() {
         return id;
     }
-
+    
     public StageType getStageType() {
         return stageType;
     }
@@ -88,6 +95,14 @@ public class Stage implements Serializable {
 
     public void setContenu(String contenu) {
         this.contenu = contenu;
+    }
+    
+    public Etudiant getEtudiant() {
+        return etudiant;
+    }
+
+    public Entreprise getEntreprise() {
+        return entreprise;
     }
 
     @Override

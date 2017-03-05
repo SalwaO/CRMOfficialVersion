@@ -15,46 +15,48 @@ import javax.persistence.Temporal;
 
 /**
  *
- * @author mbuffa
+ * @author Julian
  */
 @Entity
-public abstract class Interaction implements Serializable {
+public class TaxeApprentissage implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private int montant;
     
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date dateInteraction;
-    private InteractionType interactionType;
-    private String contenu;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date année;
 
-    public Interaction() {
+    public TaxeApprentissage() {
     }
 
-    public Interaction(String contenu) {
-        this.contenu = contenu;
-        this.dateInteraction = new Date();
+    public TaxeApprentissage(int montant, Date année) {
+        this.montant = montant;
+        this.année = année;
     }
-    
+
     public int getId() {
         return id;
     }
 
-    public Date getDateInteraction() {
-        return dateInteraction;
+    public int getMontant() {
+        return montant;
+    }
+
+    public void setMontant(int montant) {
+        this.montant = montant;
+    }
+
+    public Date getAnnée() {
+        return année;
+    }
+
+    public void setAnnée(Date année) {
+        this.année = année;
     }
     
-    public InteractionType getInteractionType() {
-        return interactionType;
-    }
-
-    public String getContenu() {
-        return contenu;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -66,11 +68,11 @@ public abstract class Interaction implements Serializable {
     public boolean equals(Object object) {
         
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Interaction)) {
+        if (!(object instanceof TaxeApprentissage)) {
             return false;
         }
         
-        Interaction other = (Interaction) object;
+        TaxeApprentissage other = (TaxeApprentissage) object;
         
         if (this.id != other.id) {
             return false;
@@ -81,6 +83,7 @@ public abstract class Interaction implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Interaction[ id=" + id + " ]";
+        return "entities.TaxeApprentissage[ id=" + id + " ]";
     }
+    
 }
