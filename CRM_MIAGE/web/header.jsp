@@ -7,8 +7,8 @@
 
 		<nav>
 			<a href="#">Home</a>
-			<a href="jsf/article/List.xhtml" class="selected">Entreprise</a>
-			<a href="jsf/membre/List.xhtml">Membre</a>
+			<a href="accueilEntreprise.jsp" class="selected">Entreprise</a>
+                        
 		</nav>
 
 		<ul>
