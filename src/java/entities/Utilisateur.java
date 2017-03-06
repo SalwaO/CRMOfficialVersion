@@ -6,10 +6,15 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -27,6 +32,9 @@ public class Utilisateur implements Serializable {
     private String prenom;
     private String nom;
     private String mail;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Interaction> interactions;
 
     public Utilisateur() {
     }
@@ -37,6 +45,7 @@ public class Utilisateur implements Serializable {
         this.prenom = prenom;
         this.nom = nom;
         this.mail = mail;
+        this.interactions = new ArrayList<>();
     }
 
     public int getId() {
@@ -81,6 +90,18 @@ public class Utilisateur implements Serializable {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+    
+    public List<Interaction> getInteractions() {
+        return interactions;
+    }
+
+    public void addInteraction(Interaction i) {
+        interactions.add(i);
+    }
+
+    public void removeInteraction(Interaction i) {
+        interactions.remove(i);
     }
 
     @Override
