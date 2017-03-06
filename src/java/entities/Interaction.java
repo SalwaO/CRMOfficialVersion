@@ -18,15 +18,15 @@ import javax.persistence.Temporal;
  * @author mbuffa
  */
 @Entity
-public abstract class Interaction implements Serializable {
+public class Interaction implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateInteraction;
     private InteractionType interactionType;
     private String contenu;
@@ -34,11 +34,12 @@ public abstract class Interaction implements Serializable {
     public Interaction() {
     }
 
-    public Interaction(String contenu) {
-        this.contenu = contenu;
+    public Interaction(InteractionType interactionType, String contenu) {
         this.dateInteraction = new Date();
+        this.interactionType = interactionType;
+        this.contenu = contenu;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -46,7 +47,7 @@ public abstract class Interaction implements Serializable {
     public Date getDateInteraction() {
         return dateInteraction;
     }
-    
+
     public InteractionType getInteractionType() {
         return interactionType;
     }
@@ -64,18 +65,18 @@ public abstract class Interaction implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        
+
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Interaction)) {
             return false;
         }
-        
+
         Interaction other = (Interaction) object;
-        
+
         if (this.id != other.id) {
             return false;
         }
-        
+
         return true;
     }
 
