@@ -19,7 +19,6 @@ rebel.xml
 ######################
 # NetBeans
 ######################
-nbproject/
 build/
 nbbuild/
 dist/
