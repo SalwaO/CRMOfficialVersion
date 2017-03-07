@@ -25,3 +25,5 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+/CRM2016-war/nbproject/private/
+/CRM2016-ejb/nbproject/private/
